@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Dog</title>
+</head>
+<body style="text-align:center; font-family:Arial;">
+
+    <h1>🐶 Random Dog Generator</h1>
+
+    <form method="POST">
+        <button type="submit">🎲 Get Random Dog</button>
+    </form>
+
+    <br><br>
+
+    {% if image_url %}
+        <img src="{{ image_url }}" width="400">
+    {% endif %}
+
+</body>
+</html>
