@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Herd Detection</title>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+                            <style>
+                                /* Inline backup gradient in case external CSS is cached/not loaded */
+                                html,body{height:100%;margin:0;background:transparent}
+                                .gradient-bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(120deg,#0b1220,#081639,#0b2a3a);background-size:600% 600%;animation:gradientShift 18s ease infinite}
+                                @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+                            </style>
+                            <link rel="stylesheet" href="/static/css/styles.css">
+    </head>
+        <body>
+            <div class="gradient-bg" aria-hidden="true"></div>
+            <div class="container">
+            <header>
+                <h1>Herd Detection — upload an image</h1>
+                <div class="help">Model: YOLOv3 • Detects common animals</div>
+            </header>
+
+                    <div class="card">
+                        <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                            <div class="upload-area">
+                                <label for="fileInput" class="upload-btn">Choose image</label>
+                                <input id="fileInput" type="file" name="file" accept="image/*,video/*" required>
+                                <button type="submit" class="upload-btn" style="background:#1e293b">Detect</button>
+                            </div>
+                            <div class="help">Accepted: JPG, PNG, MP4. For videos the app will process the first frame.</div>
+                            <div class="examples">
+                                <div class="example">Tip: use images where animals are visible</div>
+                                <div class="example">Tip: for herd detection try pasture photos</div>
+                            </div>
+                        </form>
+                    </div>
+
+            <footer>
+                <div class="help">Uploaded results are saved to <code>static/output/</code>. For better performance use smaller images or the tiny model.</div>
+            </footer>
+        </div>
+
+        <script>
+            // wire label click to file input
+            document.querySelector('label[for="fileInput"]').addEventListener('click', ()=>document.getElementById('fileInput').click())
+            // show selected filename
+            const fi = document.getElementById('fileInput')
+            fi.addEventListener('change', ()=>{
+                if(fi.files.length>0) document.querySelector('.help').textContent = fi.files[0].name
+            })
+        </script>
+    </body>
+</html>

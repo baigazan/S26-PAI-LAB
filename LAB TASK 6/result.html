@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Detection Result</title>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+            <style>
+                /* Inline backup gradient in case external CSS is cached/not loaded */
+                html,body{height:100%;margin:0;background:transparent}
+                .gradient-bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(120deg,#0b1220,#081639,#0b2a3a);background-size:600% 600%;animation:gradientShift 18s ease infinite}
+                @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+            </style>
+            <link rel="stylesheet" href="/static/css/styles.css">
+    </head>
+        <body>
+            <div class="gradient-bg" aria-hidden="true"></div>
+            <div class="container">
+            <div class="card">
+                <h2>Detection Result</h2>
+                <div class="meta">
+                    <div class="count">Animals detected: {{ count }}</div>
+                    <div class="help">Saved to <code>{{ image }}</code></div>
+                </div>
+                <div class="img-wrap">
+                    <img src="/{{ image }}" alt="result">
+                </div>
+                <a class="button" href="/">← Back</a>
+            </div>
+        </div>
+    </body>
+</html>
