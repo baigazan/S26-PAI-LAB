@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Hotel - Information Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>🏨 PC Hotel</h1>
+            </div>
+            <p>Luxury accommodation with world-class service</p>
+            <div class="subtitle">AI-Powered Hotel Assistant</div>
+        </header>
+        <div class="chat-container">
+            <div id="chat-window" class="chat-window">
+                <div class="message bot-message">
+                    <div class="avatar">🤖</div>
+                    <div class="message-content">
+                        <p><strong>Welcome to PC Hotel!</strong></p>
+                        <p>I'm your virtual concierge, ready to assist you with information about our luxurious accommodations, amenities, and services. How may I help you today?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="quick-replies">
+                <button class="quick-reply" onclick="sendQuickReply('What room types do you offer?')">Room Types</button>
+                <button class="quick-reply" onclick="sendQuickReply('What are your current rates?')">Room Rates</button>
+                <button class="quick-reply" onclick="sendQuickReply('What amenities are available?')">Amenities</button>
+                <button class="quick-reply" onclick="sendQuickReply('Are rooms available?')">Room Availability</button>
+                <button class="quick-reply" onclick="sendQuickReply('How can I make a reservation?')">Book Now</button>
+                <button class="quick-reply" onclick="sendQuickReply('Where is the hotel located?')">Location</button>
+            </div>
+            <div class="input-container">
+                <input type="text" id="user-input" placeholder="Ask me about rooms, prices, amenities, or booking..." onkeypress="handleKeyPress(event)">
+                <button id="send-button" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+        <footer>
+            <p>For immediate assistance, call (555) 123-4567 | Email: reservations@pchotel.com</p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
